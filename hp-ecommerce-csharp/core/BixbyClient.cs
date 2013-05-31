@@ -80,7 +80,7 @@ namespace HpEcommerce.core
         internal HpEcommerce.messages.Cancellation sendCancellationRequest(CancellationRequest request)
         {
             HttpWebResponse response = client.sendPostRequest(UrlGenerator.getCancellationUrl(CardAcceptor, Environment), HpXmlSerializer.getMessage(typeof(CancellationRequest), request), SharedSecret);
-            if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Forbidden)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
                 return HpXmlSerializer.convertCancellation(getResponsestring(response));
             }
